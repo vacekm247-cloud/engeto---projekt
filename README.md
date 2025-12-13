@@ -56,3 +56,20 @@ Nainstalovat Apache2 a PHP, ověřit funkčnost pomocí souboru `info.php`.
 - `screenshots/Ukol3_apache_status_sysadmin.png`  
   Stav Apache služby přes `systemctl status apache2` jako uživatel `sysadmin`.
 
+# Úprava ports.conf
+sudo sed -i 's/Listen 80/Listen 8081/' /etc/apache2/ports.conf
+
+# Vytvoření nové konfigurace VirtualHost na portu 8081
+echo '<VirtualHost *:8081>
+    ServerAdmin engeto@localhost
+    DocumentRoot /var/www/engeto
+    ErrorLog ${APACHE_LOG_DIR}/error8081.log
+    CustomLog ${APACHE_LOG_DIR}/access8081.log combined
+</VirtualHost>' | sudo tee /etc/apache2/sites-available/engeto-8081.conf
+
+# Aktivace nové konfigurace a restart Apache
+sudo a2ensite engeto-8081.conf
+sudo systemctl restart apache2
+
+# Ověření, že Apache běží na portu 8081
+sudo ss -tlnp | grep 8081
