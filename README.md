@@ -41,9 +41,18 @@ Zprovoznit SSH přístup pro uživatele `sysadmin` pomocí veřejného klíče, 
 - Úkol 2: SSH pro `sysadmin` jen přes klíč, zákaz hesla a root login → splněno ✅  
 
 ---
+---
 
-## Poznámky
+## Úkol 3 – Apache + PHP + info.php
 
-- Všechny snímky jsou uloženy ve složce `screenshots/`.  
-- README obsahuje odkazy na konkrétní snímky pro každý úkol.  
-- Konfigurace byla ověřena příkazy `id`, `groups`, `ls -la`, `systemctl restart ssh` a testovacími přihlášeními.
+### Cíl
+Nainstalovat Apache2 a PHP, ověřit funkčnost pomocí souboru `info.php`.
+
+### Důkazy
+- `screenshots/Ukol3_apache_php_install.png`  
+  Instalace Apache2 a PHP, kontrola verzí, vytvoření `info.php`, restart služby.
+- `screenshots/Ukol3_info_php_dostupna_stranka.png`  
+  Zobrazení `info.php` v prohlížeči → potvrzení funkčního PHP.
+- `screenshots/Ukol3_apache_status_sysadmin.png`  
+  Stav Apache služby přes `systemctl status apache2` jako uživatel `sysadmin`.
+
